@@ -39,6 +39,35 @@ function App() {
         </div>
       </div>
 
+      <div className="card">
+        <h2>How to Run Locally</h2>
+        <div className="instructions">
+          <h3>Setup</h3>
+          <ol>
+            <li><strong>Start the database:</strong><br />
+              <code>docker compose up -d</code></li>
+            
+            <li><strong>Install backend dependencies:</strong><br />
+              <code>cd backend && composer install</code></li>
+            
+            <li><strong>Start the PHP backend:</strong><br />
+              <code>cd backend && php -S localhost:8000 -t public</code></li>
+            
+            <li><strong>Install frontend dependencies:</strong><br />
+              <code>cd frontend && npm install</code></li>
+            
+            <li><strong>Start the React frontend:</strong><br />
+              <code>cd frontend && npm start</code></li>
+          </ol>
+          
+          <h3>Access the Application</h3>
+          <ul>
+            <li>Frontend: <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer">http://localhost:3000</a></li>
+            <li>Backend API: <a href="http://localhost:8000/api/health" target="_blank" rel="noopener noreferrer">http://localhost:8000/api/health</a></li>
+          </ul>
+        </div>
+      </div>
+
      
     </div>
   );

@@ -9,28 +9,19 @@ function App() {
       </div>
 
       <div className="card">
-        <h2>Ports</h2>
-        <ul>
-          <li>Frontend running on port 3000</li>
-          <li>Backend API on port 8000</li>
-          <li>Database on port 5432</li>
-        </ul>
-      </div>
-
-      <div className="card">
         <h2>Technology Stack</h2>
         <div className="tech-grid">
           <div className="tech-item">
             <h3>Frontend</h3>
-            <p>React</p>
+            <p>React (Port 3000)</p>
           </div>
           <div className="tech-item">
             <h3>Backend</h3>
-            <p>PHP</p>
+            <p>PHP (Port 8000)</p>
           </div>
           <div className="tech-item">
             <h3>Database</h3>
-            <p>PostgreSQL</p>
+            <p>PostgreSQL (Port 5432)</p>
           </div>
           <div className="tech-item">
             <h3>DevOps</h3>
@@ -42,29 +33,15 @@ function App() {
       <div className="card">
         <h2>How to Run Locally</h2>
         <div className="instructions">
-          <h3>Setup</h3>
           <ol>
-            <li><strong>Start the database:</strong><br />
-              <code>docker compose up -d</code></li>
-            
-            <li><strong>Install backend dependencies:</strong><br />
-              <code>cd backend && composer install</code></li>
-            
-            <li><strong>Start the PHP backend:</strong><br />
-              <code>cd backend && php -S localhost:8000 -t public</code></li>
-            
-            <li><strong>Install frontend dependencies:</strong><br />
-              <code>cd frontend && npm install</code></li>
-            
-            <li><strong>Start the React frontend:</strong><br />
-              <code>cd frontend && npm start</code></li>
+            <li><code>docker compose up -d</code></li>
+            <li><code>cd backend && composer install</code></li>
+            <li><code>cd backend && php -S localhost:8000 -t public</code></li>
+            <li><code>cd frontend && npm install</code></li>
+            <li><code>cd frontend && npm start</code></li>
           </ol>
           
-          <h3>Access the Application</h3>
-          <ul>
-            <li>Frontend: <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer">http://localhost:3000</a></li>
-            <li>Backend API: <a href="http://localhost:8000/api/health" target="_blank" rel="noopener noreferrer">http://localhost:8000/api/health</a></li>
-          </ul>
+          <p><strong>Access:</strong> <a href="http://localhost:8000/api/health" target="_blank">Backend API</a></p>
         </div>
       </div>
 

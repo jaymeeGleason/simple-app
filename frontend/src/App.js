@@ -41,6 +41,12 @@ function App() {
             <li><code>cd frontend && npm start</code></li>
           </ol>
           
+          <h3>Testing</h3>
+          <ul>
+            <li><strong>Frontend:</strong> <code>cd frontend && npm test</code></li>
+            <li><strong>Backend:</strong> <code>cd backend && ./vendor/bin/phpunit</code></li>
+          </ul>
+          
           <p><strong>Access:</strong> <a href="http://localhost:8000/api/health" target="_blank">Backend API</a></p>
         </div>
       </div>

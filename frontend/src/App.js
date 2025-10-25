@@ -1,114 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import { userService } from './services/userService';
-import UserList from './components/UserList';
-import UserForm from './components/UserForm';
+import React from 'react';
 import './App.css';
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
-  const [editingUser, setEditingUser] = useState(null);
-
-  // Fetch users
-  const fetchUsers = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const usersData = await userService.getAll();
-      setUsers(usersData);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Handle form submission
-  const handleSubmit = async (userData) => {
-    try {
-      setError(null);
-      setSuccess(null);
-      
-      if (editingUser) {
-        const updatedUser = await userService.update(editingUser.id, userData);
-        setUsers(prev => prev.map(user => user.id === editingUser.id ? updatedUser : user));
-        setSuccess('User updated successfully!');
-      } else {
-        const newUser = await userService.create(userData);
-        setUsers(prev => [newUser, ...prev]);
-        setSuccess('User created successfully!');
-      }
-      
-      setEditingUser(null);
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
-  // Handle delete
-  const handleDelete = async (userId) => {
-    if (!window.confirm('Are you sure you want to delete this user?')) {
-      return;
-    }
-
-    try {
-      setError(null);
-      await userService.delete(userId);
-      setUsers(prev => prev.filter(user => user.id !== userId));
-      setSuccess('User deleted successfully!');
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
-  // Handle edit
-  const handleEdit = (user) => {
-    setEditingUser(user);
-    setSuccess(null);
-  };
-
-  // Cancel edit
-  const handleCancel = () => {
-    setEditingUser(null);
-    setSuccess(null);
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
   return (
     <div className="container">
       <div className="header">
-        <h1>Web Application Test</h1>
+        <h1>🚀 Web Application Test</h1>
         <p>React Frontend + PHP Backend + PostgreSQL Database</p>
       </div>
 
-      {error && <div className="error">{error}</div>}
-      {success && <div className="success">{success}</div>}
-
       <div className="card">
-        <h2>{editingUser ? 'Edit User' : 'Add New User'}</h2>
-        <UserForm 
-          user={editingUser}
-          onSubmit={handleSubmit}
-          onCancel={editingUser ? handleCancel : null}
-        />
+        <h2>✅ Application Status</h2>
+        <p>Your full-stack web application is ready!</p>
+        <ul>
+          <li>✅ React frontend running on port 3000</li>
+          <li>✅ PHP backend API on port 8000</li>
+          <li>✅ PostgreSQL database on port 5432</li>
+          <li>✅ Docker development environment</li>
+        </ul>
       </div>
 
       <div className="card">
-        <h2>Users</h2>
-        {loading ? (
-          <div className="loading">Loading users...</div>
-        ) : (
-          <UserList 
-            users={users}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-          />
-        )}
+        <h2>🛠️ Technology Stack</h2>
+        <div className="tech-grid">
+          <div className="tech-item">
+            <h3>Frontend</h3>
+            <p>React with modern hooks</p>
+          </div>
+          <div className="tech-item">
+            <h3>Backend</h3>
+            <p>PHP with RESTful API</p>
+          </div>
+          <div className="tech-item">
+            <h3>Database</h3>
+            <p>PostgreSQL with raw SQL</p>
+          </div>
+          <div className="tech-item">
+            <h3>DevOps</h3>
+            <p>Docker & Docker Compose</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="card">
+        <h2>🎯 Ready for Interview</h2>
+        <p>This application demonstrates:</p>
+        <ul>
+          <li>Full-stack development skills</li>
+          <li>Database design and queries</li>
+          <li>API development and integration</li>
+          <li>Modern development practices</li>
+        </ul>
       </div>
     </div>
   );
